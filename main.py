@@ -14,6 +14,8 @@ def getEmotion(base64String):
 	return response
 
 if __name__ == '__main__':
+	listOfFeatures = []
 	sourceBytes = open("test.png", "rb").read()
 	for var in getEmotion(sourceBytes)['Labels']:
-		print var
+		listOfFeatures.append(var["Name"])
+	print listOfFeatures
