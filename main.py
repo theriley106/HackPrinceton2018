@@ -55,7 +55,7 @@ while True:
 	# boxes that are still people
 	rects = np.array([[x, y, x + w, y + h] for (x, y, w, h) in rects])
 	pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
-	if LAW_BANDWIDTH == True:
+	if LOW_BANDWIDTH == True:
 		if len(pick) != 0:
 			isGun = isGun(imgToNumpy(img))
 		else:
