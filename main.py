@@ -64,12 +64,6 @@ while True:
 		isGun = isGun(imgToNumpy(img))
 	else:
 		isGun = False
-	# draw the final bounding boxes
-	for (xA, yA, xB, yB) in pick:
-		cv2.rectangle(img, (xA, yA), (xB, yB), (0, 255, 0), 2)
-	# initialize the HOG descriptor/person detector
-	hog = cv2.HOGDescriptor()
-	hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 	cap.release()
 	cv2.destroyAllWindows()
 	time.sleep(.01)
