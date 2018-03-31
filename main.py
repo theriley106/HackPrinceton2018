@@ -5,8 +5,14 @@ import cv2
 from imutils.object_detection import non_max_suppression
 import numpy
 import numpy as np
+import paho.mqtt.client as mqtt
 
 LOW_BANDWIDTH = True
+
+broker = "104.238.164.118" # broker address
+print("Connecting to broker...\n")
+mqtt_client = mqtt.Client("client1") # client name
+mqtt_client.connect(broker,8883,60) # broker, port, idklol
 
 client = boto3.client(
 	'rekognition',
@@ -63,10 +69,12 @@ while True:
 	else:
 		isGun = isAGun(imgToNumpy(img))
 	print isGun
+	if (isGun == True):
+		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
 	cap.release()
 	cv2.destroyAllWindows()
+	mqtt_client.disconnect() # disconnects client
 	time.sleep(.01)
-
 
 
 
