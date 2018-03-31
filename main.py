@@ -59,9 +59,10 @@ while True:
 		if len(pick) != 0:
 			isGun = isAGun(imgToNumpy(img))
 		else:
-			isGun = isAGun(imgToNumpy(img))
+			isGun = False
 	else:
-		isGun = False
+		isGun = isAGun(imgToNumpy(img))
+	print isGun
 	cap.release()
 	cv2.destroyAllWindows()
 	time.sleep(.01)
