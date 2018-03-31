@@ -56,7 +56,9 @@ while True:
    		data = f.read()
 	isGun = isAGun(data)
 	print isGun
-	if isGun == True:
+	'''if isGun == True:
 		mqtt_client.publish("HP18/report/test", "SEND TEST raspi") # publishes to topic with message (should appear on mosquito)
+	'''
 	time.sleep(1)
 	mqtt_client.disconnect() # disconnects client from broker
+
