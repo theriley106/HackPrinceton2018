@@ -48,7 +48,8 @@ def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
 camera = picamera.PiCamera()
 stream = io.BytesIO()
-while True:
+
+'''while True:
 	camera.capture(stream, 'png')
 	img = Image.open(stream)
 	isGun = isAGun(imgToNumpy(img))
@@ -57,7 +58,18 @@ while True:
 		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
 
 	mqtt_client.disconnect() # disconnects client
-	time.sleep(.01)
+	time.sleep(.01)'''
+while True:
+	# Create the in-memory stream
+	stream = io.BytesIO()
+	camera = picamera.PiCamera()
+	camera.start_preview()
+	time.sleep(2)
+	camera.capture(stream, format='jpeg')
+	# "Rewind" the stream to the beginning so we can read its content
+	stream.seek(0)
+	image = Image.open(stream)
+	isGun = isAGun(imgToNumpy(image))
 
 
 
