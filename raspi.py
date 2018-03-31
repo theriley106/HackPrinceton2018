@@ -62,17 +62,11 @@ def imgToNumpy(img):
 	time.sleep(.01)'''
 while True:
 	# Create the in-memory stream
-	stream = io.BytesIO()
 	camera = picamera.PiCamera()
-	camera.start_preview()
-	time.sleep(1)
-	camera.capture(stream, format='png')
-	# "Rewind" the stream to the beginning so we can read its content
-	stream.seek(0)
-	print stream.encode("base64")
-
-	img = Image.open(file_like)
-	isGun = isAGun(file_like)
+	camera.capture('file.png')
+	with open("file.png", "rb") as f:
+   		data = f.read()
+	isGun = isAGun(data.encode("base64"))
 
 
 
