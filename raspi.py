@@ -44,7 +44,7 @@ def isAGun(imageString):
 
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
-
+camera = picamera.PiCamera()
 while True:
 	img = camera.capture()
 	isGun = isAGun(imgToNumpy(img))
