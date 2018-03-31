@@ -69,4 +69,5 @@ while True:
    		data = f.read()
 	isGun = isAGun(data)
 	print isGun
+	time.sleep(.1)
 
