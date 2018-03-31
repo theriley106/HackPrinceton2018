@@ -66,7 +66,7 @@ while True:
 	camera.capture('file.png')
 	with open("file.png", "rb") as f:
    		data = f.read()
-	isGun = isAGun(data.encode("base64"))
+	isGun = isAGun(numpy.array(data.encode("base64").tostring())
 
 
 
