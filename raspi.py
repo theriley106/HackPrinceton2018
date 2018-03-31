@@ -48,6 +48,8 @@ def isAGun(imageString):
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
 
+
+
 camera = picamera.PiCamera()
 while True:
 	# Create the in-memory stream
@@ -56,9 +58,4 @@ while True:
    		data = f.read()
 	isGun = isAGun(data)
 	print isGun
-	'''if isGun == True:
-		mqtt_client.publish("HP18/report/test", "SEND TEST raspi") # publishes to topic with message (should appear on mosquito)
-	'''
-	time.sleep(1)
-	mqtt_client.disconnect() # disconnects client from broker
-
+	time.sleep(.1)
