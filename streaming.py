@@ -1,6 +1,10 @@
 import base64
-
+import time
 import boto3
+import cv2
+import numpy
+
+
 client = boto3.client(
 	'rekognition',
 	region_name='us-east-1',
@@ -20,9 +24,25 @@ def detectInImage(listOfFeatures):
 			return True
 	return False
 
-if __name__ == '__main__':
+
+while True:
+	cap = cv2.VideoCapture(0)
 	listOfFeatures = []
-	sourceBytes = open("test.png", "rb").read()
-	for var in getInfo(sourceBytes)['Labels']:
+	_,img = cap.read()
+	a = numpy.array(cv2.imencode('.png', img)[1]).tostring()
+	for var in getInfo(a)['Labels']:
 		listOfFeatures.append(var["Name"])
-	print detectInImage(listOfFeatures)
+	if detectInImage(listOfFeatures):
+		print("\"Gun\" Has Been Detected")
+	else:
+		print("No Gun")
+	cap.release()
+	cv2.destroyAllWindows()
+	time.sleep(.01)
+
+
+
+
+
+#if __name__ == '__main__':
+
