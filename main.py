@@ -8,9 +8,6 @@ client = boto3.client(
 	aws_secret_access_key=open("../skey.txt").read().strip(),
 
 )
-# Set this to whatever percentage of 'similarity'
-# you'd want
-SIMILARITY_THRESHOLD = 75.0
 
 def getEmotion(base64String):
 	response = client.detect_labels(Image={'Bytes': base64String})
@@ -18,5 +15,4 @@ def getEmotion(base64String):
 
 if __name__ == '__main__':
 	sourceBytes = open("test.png", "rb").read()
-
 	print getEmotion(sourceBytes)
