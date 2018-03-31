@@ -60,11 +60,13 @@ def imgToNumpy(img):
 
 	mqtt_client.disconnect() # disconnects client
 	time.sleep(.01)'''
+
+camera = picamera.PiCamera()
 while True:
 	# Create the in-memory stream
-	camera = picamera.PiCamera()
 	camera.capture('file.png')
 	with open("file.png", "rb") as f:
    		data = f.read()
 	isGun = isAGun(data)
+	print isGun
 
