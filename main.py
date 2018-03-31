@@ -47,10 +47,8 @@ while True:
 	# detect people in the image
 	(rects, weights) = hog.detectMultiScale(img, winStride=(4, 4),
 		padding=(8, 8), scale=1.05)
-	orig = img.copy()
-	# draw the original bounding boxes
 	for (x, y, w, h) in rects:
-		cv2.rectangle(orig, (x, y), (x + w, y + h), (0, 0, 255), 2)
+		cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
 	# apply non-maxima suppression to the bounding boxes using a
 	# fairly large overlap threshold to try to maintain overlapping
