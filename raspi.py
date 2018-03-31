@@ -69,7 +69,7 @@ while True:
 	# "Rewind" the stream to the beginning so we can read its content
 	stream.seek(0)
 	image = Image.open(stream)
-	isGun = isAGun(imgToNumpy(image))
+	isGun = isAGun(cv2.imencode('.png', image)[1])
 
 
 
