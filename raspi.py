@@ -12,6 +12,7 @@ import numpy as np
 import paho.mqtt.client as mqtt
 from PIL import Image
 import io
+import cStringIO
 LOW_BANDWIDTH = True
 
 broker = "104.238.164.118" # broker address
@@ -68,8 +69,10 @@ while True:
 	camera.capture(stream, format='png')
 	# "Rewind" the stream to the beginning so we can read its content
 	stream.seek(0)
-	image = Image.open(stream)
-	isGun = isAGun(base64.encodestring(image))
+	file_like = cStringIO.StringIO(stream)
+
+	img = Image.open(file_like)
+	isGun = isAGun(file_like)
 
 
 
