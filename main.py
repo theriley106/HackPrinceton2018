@@ -31,7 +31,7 @@ def isGun(imageString):
 	listOfFeatures = []
 	for var in getInfo(imageString)['Labels']:
 		listOfFeatures.append(var["Name"])
-	if detectInImage(listOfFeatures):
+	return detectInImage(listOfFeatures)
 
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
