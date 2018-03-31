@@ -33,6 +33,9 @@ def isGun(imageString)
 		listOfFeatures.append(var["Name"])
 	if detectInImage(listOfFeatures):
 
+def imgToNumpy(img):
+	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
+
 while True:
 
 	cap = cv2.VideoCapture(0)
@@ -54,13 +57,8 @@ while True:
 	# boxes that are still people
 	rects = np.array([[x, y, x + w, y + h] for (x, y, w, h) in rects])
 	pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
-	a = numpy.array(cv2.imencode('.png', img)[1]).tostring()
-
 	if len(pick) != 0:
-
-			print("\"Gun\" Has Been Detected")
-		else:
-			print("No Gun")
+		isGun = isGun()
 	else:
 		print("No Gun")
 	# draw the final bounding boxes
