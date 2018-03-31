@@ -58,9 +58,9 @@ while True:
 	rects = np.array([[x, y, x + w, y + h] for (x, y, w, h) in rects])
 	pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
 	if len(pick) != 0:
-		isGun = isGun()
+		isGun = isGun(imgToNumpy(img))
 	else:
-		print("No Gun")
+		isGun = False
 	# draw the final bounding boxes
 	for (xA, yA, xB, yB) in pick:
 		cv2.rectangle(img, (xA, yA), (xB, yB), (0, 255, 0), 2)
