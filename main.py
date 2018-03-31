@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
 import base64
 import time
+import os
 import boto3
 import cv2
 from imutils.object_detection import non_max_suppression
@@ -69,7 +71,8 @@ while True:
 	else:
 		isGun = isAGun(imgToNumpy(img))
 	print isGun
-	if (isGun == True):
+	if isGun == True:
+		#os.system("python talk.py")
 		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
 	cap.release()
 	cv2.destroyAllWindows()
