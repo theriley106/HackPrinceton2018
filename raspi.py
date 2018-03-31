@@ -69,7 +69,6 @@ while True:
 	camera.capture(stream, format='png')
 	# "Rewind" the stream to the beginning so we can read its content
 	stream.seek(0)
-	file_like = cStringIO.StringIO(stream)
 	print stream.encode("base64")
 
 	img = Image.open(file_like)
