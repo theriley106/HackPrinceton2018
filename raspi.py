@@ -46,8 +46,8 @@ def isAGun(imageString):
 
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
-camera = picamera.PiCamera()
-stream = io.BytesIO()
+#camera = picamera.PiCamera()
+#stream = io.BytesIO()
 
 '''while True:
 	camera.capture(stream, 'png')
@@ -65,7 +65,7 @@ while True:
 	camera = picamera.PiCamera()
 	camera.start_preview()
 	time.sleep(2)
-	camera.capture(stream, format='jpeg')
+	camera.capture(stream, format='png')
 	# "Rewind" the stream to the beginning so we can read its content
 	stream.seek(0)
 	image = Image.open(stream)
