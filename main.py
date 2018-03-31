@@ -11,10 +11,9 @@ import paho.mqtt.client as mqtt
 
 LOW_BANDWIDTH = True
 
-broker = "104.238.164.118" # broker address
 print("Connecting to broker...\n")
-mqtt_client = mqtt.Client("client1") # client name
-mqtt_client.connect(broker,8883,60) # broker, port, idklol
+mqtt_client = mqtt.Client("client1") # new client with name
+mqtt_client.connect("104.238.164.118", 8883, 60) # connects to broker address
 
 client = boto3.client(
 	'rekognition',
@@ -73,10 +72,11 @@ while True:
 	print isGun
 	if isGun == True:
 		#os.system("python talk.py")
-		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
+		mqtt_client.publish("HP18/report/test", "SEND TEST main") # publishes to topic with message (should appear on mosquito)
+		time.sleep(.01)
 	cap.release()
 	cv2.destroyAllWindows()
-	mqtt_client.disconnect() # disconnects client
+	mqtt_client.disconnect() # disconnects client from broker
 	time.sleep(.01)
 
 

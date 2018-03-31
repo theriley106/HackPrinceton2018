@@ -13,12 +13,12 @@ import paho.mqtt.client as mqtt
 from PIL import Image
 import io
 import cStringIO
+
 LOW_BANDWIDTH = True
 
-broker = "104.238.164.118" # broker address
 print("Connecting to broker...\n")
-mqtt_client = mqtt.Client("client1") # client name
-mqtt_client.connect(broker,8883,60) # broker, port, idklol
+mqtt_client = mqtt.Client("client1") # new client with name
+mqtt_client.connect("104.238.164.118", 8883, 60) # connects to broker address
 
 client = boto3.client(
 	'rekognition',
@@ -47,19 +47,6 @@ def isAGun(imageString):
 
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
-#camera = picamera.PiCamera()
-#stream = io.BytesIO()
-
-'''while True:
-	camera.capture(stream, 'png')
-	img = Image.open(stream)
-	isGun = isAGun(imgToNumpy(img))
-	if isGun == True:
-		#os.system("python talk.py")
-		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
-
-	mqtt_client.disconnect() # disconnects client
-	time.sleep(.01)'''
 
 camera = picamera.PiCamera()
 while True:
@@ -69,5 +56,7 @@ while True:
    		data = f.read()
 	isGun = isAGun(data)
 	print isGun
-	time.sleep(.1)
-
+	if isGun == True:
+		mqtt_client.publish("HP18/report/test", "SEND TEST raspi") # publishes to topic with message (should appear on mosquito)
+	time.sleep(1)
+	mqtt_client.disconnect() # disconnects client from broker
