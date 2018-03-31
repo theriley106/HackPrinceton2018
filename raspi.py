@@ -64,12 +64,12 @@ while True:
 	stream = io.BytesIO()
 	camera = picamera.PiCamera()
 	camera.start_preview()
-	time.sleep(2)
+	time.sleep(1)
 	camera.capture(stream, format='png')
 	# "Rewind" the stream to the beginning so we can read its content
 	stream.seek(0)
 	image = Image.open(stream)
-	isGun = isAGun(base64.encodestring(img))
+	isGun = isAGun(base64.encodestring(image))
 
 
 
