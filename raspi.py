@@ -49,7 +49,7 @@ camera = picamera.PiCamera()
 stream = io.BytesIO()
 while True:
 	img = camera.capture(stream, 'png')
-	isGun = isAGun(imgToNumpy(img))
+	isGun = isAGun(img)
 	if isGun == True:
 		#os.system("python talk.py")
 		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
