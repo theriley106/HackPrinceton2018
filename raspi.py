@@ -10,7 +10,8 @@ from imutils.object_detection import non_max_suppression
 import numpy
 import numpy as np
 import paho.mqtt.client as mqtt
-
+from PIL import Image
+import io
 LOW_BANDWIDTH = True
 
 broker = "104.238.164.118" # broker address
@@ -48,8 +49,9 @@ def imgToNumpy(img):
 camera = picamera.PiCamera()
 stream = io.BytesIO()
 while True:
-	img = camera.capture(stream, 'png')
-	isGun = isAGun(img)
+	camera.capture(stream, 'png')
+	img = Image.open(stream)
+	isGun = isAGun(imgToNumpy(img))
 	if isGun == True:
 		#os.system("python talk.py")
 		mqtt_client.publish("HP18/report", "ACTIVE SOFT DRINK ON PREMISES!") # sends warning
