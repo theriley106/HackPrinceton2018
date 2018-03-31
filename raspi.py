@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import io
 import picamera
 import base64
 import time
@@ -45,8 +46,9 @@ def isAGun(imageString):
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
 camera = picamera.PiCamera()
+stream = io.BytesIO()
 while True:
-	img = camera.capture()
+	img = camera.capture(stream, 'png')
 	isGun = isAGun(imgToNumpy(img))
 	if isGun == True:
 		#os.system("python talk.py")
