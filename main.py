@@ -15,4 +15,5 @@ def getEmotion(base64String):
 
 if __name__ == '__main__':
 	sourceBytes = open("test.png", "rb").read()
-	print getEmotion(sourceBytes)
+	for var in getEmotion(sourceBytes)['Labels']:
+		print var
