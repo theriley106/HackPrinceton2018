@@ -9,13 +9,20 @@ client = boto3.client(
 
 )
 
-def getEmotion(base64String):
+def getInfo(base64String):
 	response = client.detect_labels(Image={'Bytes': base64String})
 	return response
+
+def detectInImage(listOfFeatures):
+	listOfObjects = ["Coke", "Pepsi", "Drink", "Can", "Bottle"]
+	for var in listOfObjects:
+		if var.title() in listOfFeatures:
+			return True
+	return False
 
 if __name__ == '__main__':
 	listOfFeatures = []
 	sourceBytes = open("test.png", "rb").read()
-	for var in getEmotion(sourceBytes)['Labels']:
+	for var in getInfo(sourceBytes)['Labels']:
 		listOfFeatures.append(var["Name"])
-	print listOfFeatures
+	print detectInImage(listOfFeatures)
