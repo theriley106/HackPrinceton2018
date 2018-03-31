@@ -58,8 +58,8 @@ while True:
 	if LAW_BANDWIDTH == True:
 		if len(pick) != 0:
 			isGun = isGun(imgToNumpy(img))
-	else:
-		isGun = isGun(imgToNumpy(img))
+		else:
+			isGun = isGun(imgToNumpy(img))
 	else:
 		isGun = False
 	cap.release()
