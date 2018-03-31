@@ -27,7 +27,7 @@ def detectInImage(listOfFeatures):
 			return True
 	return False
 
-def isGun(imageString):
+def isAGun(imageString):
 	listOfFeatures = []
 	for var in getInfo(imageString)['Labels']:
 		listOfFeatures.append(var["Name"])
@@ -57,9 +57,9 @@ while True:
 	pick = non_max_suppression(rects, probs=None, overlapThresh=0.65)
 	if LOW_BANDWIDTH == True:
 		if len(pick) != 0:
-			isGun = isGun(imgToNumpy(img))
+			isGun = isAGun(imgToNumpy(img))
 		else:
-			isGun = isGun(imgToNumpy(img))
+			isGun = isAGun(imgToNumpy(img))
 	else:
 		isGun = False
 	cap.release()
