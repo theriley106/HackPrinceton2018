@@ -58,4 +58,6 @@ while True:
    		data = f.read()
 	isGun = isAGun(data)
 	print isGun
+	if isGun == True:
+		mqtt_client.publish("HP18/report/test", "SEND TEST raspi")
 	time.sleep(.1)
