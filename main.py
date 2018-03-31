@@ -71,9 +71,7 @@ while True:
 		isGun = isAGun(imgToNumpy(img))
 	print isGun
 	if isGun == True:
-		#os.system("python talk.py")
-		mqtt_client.publish("HP18/report/test", "SEND TEST main") # publishes to topic with message (should appear on mosquito)
-		time.sleep(.01)
+		mqtt_client.publish("HP18/report/test", "SEND TEST raspi")
 	cap.release()
 	cv2.destroyAllWindows()
 	mqtt_client.disconnect() # disconnects client from broker
