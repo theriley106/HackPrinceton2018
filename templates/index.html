@@ -81,6 +81,7 @@
                     return xmlHttp.responseText;
                 }
             function clearIssue(){
+                document.getElementById("alert").style.display = 'none';
                 setWait = false;
                 fileSizeURL = "/clearAllIssues";
                 httpGet(fileSizeURL);
