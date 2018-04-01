@@ -19,5 +19,10 @@ def test():
 def addNumber(phoneNumber):
 	main.writeNum(phoneNumber)
 
+@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
+def raiseIssue(cameraNum):
+	pass
+
+
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
