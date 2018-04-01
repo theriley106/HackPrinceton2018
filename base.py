@@ -18,6 +18,14 @@ def checkForGun(url):
 	   		main.setAlarm(url)
 
 
+threads = [threading.Thread(target=chekForGun, args=(url,)) for url in URLs]
+for thread in threads:
+	thread.start()
+
+for thread in threads:
+	thread.join()
+
+
 
 
 	response = requests.get(url, stream=True)
