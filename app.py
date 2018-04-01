@@ -6,6 +6,8 @@ app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 import main
 import json
 openIssues = []
+with open("issueList.json", 'w') as outfile:
+	json.dump(openIssues, outfile)
 
 @app.route('/')
 def main():
