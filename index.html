@@ -14,6 +14,13 @@
         <script src="assets/js/skel.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
+        <script>
+window.setInterval(function() {
+    var timestamp = Math.floor(Date.now());
+    document.getElementById("update").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp + "?delay=40000";
+}, 50);
+
+</script>
     </head>
     <body id="top">
         <!-- Navigation -->
@@ -31,7 +38,7 @@
                     <p>Application is listening...<br />Check back for updates...</p>
                 </div>
                 <div class="image phone">
-                    <div class="inner"><iframe src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></iframe></div>
+                    <div class="inner"><img id="update" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img></div>
                 </div>
             </header>
         </section>
