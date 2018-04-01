@@ -31,6 +31,9 @@ def clearIssue(cameraNum):
 def clearAllIssues():
 	pass
 
+@app.route("/openIssues")
+def checkOpenIssues():
+	pass
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
