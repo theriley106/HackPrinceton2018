@@ -34,7 +34,7 @@
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("imptUpdate").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
 
-            }, 100)
+            }, 5000)
 
             window.setInterval(function() {
                 fileSizeURL = "/openIssues";
@@ -97,8 +97,6 @@
     <body id="top">
 
 
-                            <!-- Trigger/Open The Modal -->
-                    <button id="myBtn">Open Modal</button>
 
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
@@ -106,7 +104,7 @@
                       <!-- Modal content -->
                       <div class="modal-content">
                         <span class="close">&times;</span>
-                        <img id="imptUpdate" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img>
+                        <img id="imptUpdate" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:table-cell; vertical-align:middle; text-align:center; opacity: 0.8; height: 95% !important;"></img>
                       </div>
 
                     </div>
@@ -130,12 +128,14 @@
                     <h1><a href="#">Welcome to FirstAlert!</a></h1>
                     <p>Application is listening...<br /></p>
                 </div>
-                <div class="image phone">
+                <span id="test">
+                <div id="num1" class="image phone">
                     <div class="inner"><img id="update1" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img></div>
                 </div>
-                <div class="image phone">
+                <div id="num2" class="image phone">
                     <div class="inner"><img id="update2" src="http://10.25.213.197/cam_pic.php?time=0" height="320"></img></div>
                 </div>
+                </span>
             </header>
 
 
@@ -165,6 +165,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    height: 80%;
 }
 
 /* The Close Button */
