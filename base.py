@@ -11,13 +11,13 @@ def checkForGun(url):
 			print("Checking {}".format(url))
 			response = requests.get(url, stream=True)
 			with open('file{}.png'.format(URLs.index(url)), 'wb') as out_file:
-			    shutil.copyfileobj(response.raw, out_file)
+				shutil.copyfileobj(response.raw, out_file)
 			del response
 			with open("file{}.png".format(URLs.index(url)), "rb") as f:
-		   		data = f.read()
-		   	isGun = isAGun(data)
-		   	if isGun == True:
-		   		main.setAlarm(url)
+				data = f.read()
+			isGun = isAGun(data)
+			if isGun == True:
+				main.setAlarm(url)
 		except Exception as exp:
 			print exp
 
