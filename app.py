@@ -12,7 +12,7 @@ def main():
 	return "\n".join([awsKey, sKey])
 
 @app.route('/test')
-def main():
+def test():
 	return "<h5>This works!</h5>"
 
 if __name__ == "__main__":
