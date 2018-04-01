@@ -50,6 +50,9 @@ def clearIssue(cameraNum):
 
 @app.route('/clearAllIssues')
 def clearAllIssues():
+	openIssues = []
+	with open("issueList.json", 'w') as outfile:
+		json.dump(openIssues, outfile)
 	return jsonify([])
 
 @app.route("/openIssues")

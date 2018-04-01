@@ -49,7 +49,7 @@
             }, 100);
 
             function danger(){
-                $('header').css('background', 'red');document.getElementById("update1").height=1000;document.getElementById("update1").width=1000;document.getElementById("information").innerHTML = "Danger!";
+                $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
             }
             function httpGet(theUrl)
                 // The network request grabs the json containing mp3 structure
@@ -59,9 +59,10 @@
                     xmlHttp.send( null );
                     return xmlHttp.responseText;
                 }
-            function clearIssue(issueNum){
-                fileSizeURL = "/clearIssue/" + issueNum;
+            function clearIssue(){
+                fileSizeURL = "/clearAllIssues";
                 httpGet(fileSizeURL);
+               $('header').css('background', '#4696e5');document.getElementById("information").innerHTML = '<h1><a href="#">Welcome to FirstAlert!</a></h1><p>Application is listening...<br></p>';
             }
 
         </script>
