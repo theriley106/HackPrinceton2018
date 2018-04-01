@@ -37,7 +37,11 @@ def raiseIssue(cameraNum, listOfIssues=[]):
 		if str(var["Camera"]) == str(cameraNum):
 			numIn = True
 	if numIn == False:
+		for val in openIssues:
+			openIssues.remove(val)
 		openIssues.append({"Camera": cameraNum})
+	print openIssues
+	print("\n\n\n\n\n\n")
 	with open("issueList.json", 'w') as outfile:
 		json.dump(openIssues, outfile)
 

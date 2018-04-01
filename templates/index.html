@@ -32,13 +32,13 @@
 
             window.setInterval(function(){
                 var timestamp = Math.floor(Date.now());
-                document.getElementById("imptUpdate1").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
+                document.getElementById("imptUpdate0").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
 
             }, 500)
 
             window.setInterval(function(){
                 var timestamp = Math.floor(Date.now());
-                document.getElementById("imptUpdate2").src="http://10.25.213.197/cam_pic.php?time=" + timestamp;
+                document.getElementById("imptUpdate1").src="http://10.25.213.197/cam_pic.php?time=" + timestamp;
 
             }, 500)
 
@@ -46,11 +46,20 @@
                 fileSizeURL = "/openIssues";
                 jsonString = httpGet(fileSizeURL);
                 var fileInfo = JSON.parse(jsonString);
-                console.log(fileInfo.length)
+
+                console.log(fileInfo)
                 if (fileInfo.length > 0 && setWait == false) {
                      setWait = true;
-                     var tempVal = fileInfo[0].Camera + 1;
+                     console.log('camera' + fileInfo[0].Camera)
+                     var tempVal = fileInfo[0].Camera;
+                     console.log("Temp val: " + tempVal)
                      document.getElementById("imptUpdate" + tempVal).style.display='block';
+                     if (tempVal == '1'){
+                        document.getElementById("imptUpdate0").style.display='none';
+                     }
+                     else {
+                        document.getElementById("imptUpdate1").style.display='none';
+                     }
                     danger();
                 }
             }, 400);
@@ -73,7 +82,8 @@
                         document.getElementById('alertVal').style.display='block';
                         return
                     }
-                }); document.addEventListener("keypress", function(event) {
+                }
+                ); document.addEventListener("keypress", function(event) {
                     if (event.keyCode == 110) {
                         // This is N
                         clearIssue();
@@ -111,7 +121,7 @@
     <body id="top">
 
                     <div id="alertVal" class="alert alert-danger" style="margin-bottom: 0px !important;display:none;">
-                        Students have been alerted of the situation
+                        <center>Students have been alerted of the situation</center>
                       </div>
                     <!-- The Modal -->
                     <div id="myModal" class="modal">
@@ -120,8 +130,8 @@
                       <div class="modal-content">
                         <span class="close">&times;</span>
                         <h2><b><center><font style="color:#FFFFFF;">This situation needs your attention</font></center></b></h2><p></p>
+                        <img id="imptUpdate0" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:none; vertical-align:middle; text-align:center; opacity: 1; height: 95% !important;"></img>
                         <img id="imptUpdate1" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:none; vertical-align:middle; text-align:center; opacity: 1; height: 95% !important;"></img>
-                        <img id="imptUpdate2" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:none; vertical-align:middle; text-align:center; opacity: 1; height: 95% !important;"></img>
 
 
                        <h2><b><center><font style="color:#FFFFFF;">Press Y To Alert Students | Press N To Ignore Alert</font></center></b></h2><p></p>
