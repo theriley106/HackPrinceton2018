@@ -6,7 +6,6 @@ app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 import main
 import json
 openIssues = []
-tempList = []
 
 @app.route('/')
 def main():
@@ -30,8 +29,6 @@ def addNumber(phoneNumber):
 
 #@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
 def raiseIssue(cameraNum, listOfIssues=[]):
-	if cameraNum not in tempList:
-		tempList = []
 	print("GUN DETECTED")
 	numIn = False
 	for var in openIssues:
