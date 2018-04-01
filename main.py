@@ -42,6 +42,10 @@ def isAGun(imageString):
 
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
+
+def sendText(number, text="Emergency Situation Detected at {0}", location="Princeton University"):
+	text = text.format(location)
+
 if __name__ == '__main__':
 	while True:
 
