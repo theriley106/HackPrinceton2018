@@ -37,7 +37,10 @@
                 fileSizeURL = "/openIssues";
                 jsonString = httpGet(fileSizeURL);
                 var fileInfo = JSON.parse(jsonString);
-                danger();
+                console.log(fileInfo.length)
+                if (fileInfo.length > 0) {
+                    danger();
+                }
             }, 400);
 
             window.setInterval(function() {

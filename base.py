@@ -8,6 +8,7 @@ import app
 URLs = ['http://10.24.88.66/html/cam_pic.php?time=12', "http://10.25.213.197/cam_pic.php?time=0"]
 
 def checkForGun(url):
+	prevAns = False
 	while True:
 		try:
 			print("Checking {}".format(url))
@@ -18,10 +19,11 @@ def checkForGun(url):
 			with open("file{}.png".format(URLs.index(url)), "rb") as f:
 				data = f.read()
 			isGun, labels = main.isAGunWFeatures(data)
-			if isGun == True:
+			if isGun == True and prevAns == True:
 				app.raiseIssue(URLs.index(url), labels)
 		except Exception as exp:
 			print exp
+		prevAns = isGun
 		time.sleep(.5)
 
 
