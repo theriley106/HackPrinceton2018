@@ -11,5 +11,9 @@ def main():
 	sKey = open("../skey.txt").read().strip()
 	return "\n".join([awsKey, sKey])
 
+@app.route('/test')
+def main():
+	return "<h5>This works!</h5>"
+
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
