@@ -30,6 +30,12 @@
                 document.getElementById("update1").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
             }, 100);
 
+            window.setInterval(function(){
+                var timestamp = Math.floor(Date.now());
+                document.getElementById("imptUpdate").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
+
+            }, 100)
+
             window.setInterval(function() {
                 fileSizeURL = "/openIssues";
                 jsonString = httpGet(fileSizeURL);
@@ -47,6 +53,8 @@
             }, 100);
 
             function danger(){
+
+                modal.style.display = "block";
                 $('#alert').animate({width: "100%"}, 200 );
                 $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
                 document.addEventListener("keypress", function(event) {
@@ -97,7 +105,7 @@
                       <!-- Modal content -->
                       <div class="modal-content">
                         <span class="close">&times;</span>
-                        <p>Some text in the Modal..</p>
+                        <img id="imptUpdate" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img>
                       </div>
 
                     </div>
@@ -173,23 +181,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 </style>
 </head>
-<body>
-
-<h2>Modal Example</h2>
-
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-
-</div>
 
 <script>
 // Get the modal
