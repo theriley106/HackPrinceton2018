@@ -44,7 +44,7 @@ def isAGun(imageString):
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
 
-def sendText(number, text="Emergency Situation Detected at {0}", location="Princeton University", plusNumber=1):
+def sendText(number, text="Emergency Situation Detected at {0}", location="Princeton University"):
 	text = text.format(location)
 
 	# You should avoid sharing this token,
@@ -53,7 +53,7 @@ def sendText(number, text="Emergency Situation Detected at {0}", location="Princ
 	sms = lib.messagebird.sms["@0.1.3"]
 
 	result = sms.create(
-	  recipient=str(plusNumber) + str(number), # (required)
+	  recipient=str(number), # (required)
 	  body=text # (required)
 	)
 
@@ -65,6 +65,8 @@ def writeNum(number, dbFile="numDB.json"):
 	currentList["Nums"].append(number)
 	with open(dbFile, 'w') as outfile:
 		json.dump(currentList, outfile)
+
+def sendTextToAll()
 
 
 
