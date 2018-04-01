@@ -59,6 +59,10 @@
                     xmlHttp.send( null );
                     return xmlHttp.responseText;
                 }
+            function clearIssue(issueNum){
+                fileSizeURL = "/clearIssue/" + issueNum;
+                httpGet(fileSizeURL);
+            }
 
         </script>
         <style>

@@ -41,7 +41,7 @@ def raiseIssue(cameraNum, listOfIssues=[]):
 	with open("issueList.json", 'w') as outfile:
 		json.dump(openIssues, outfile)
 
-#@app.route('/clearIssue/<cameraNum>', methods=['POST'])
+@app.route('/clearIssue/<cameraNum>')
 def clearIssue(cameraNum):
 	for var in openIssues:
 		if str(var["Camera"]) == str(cameraNum):
