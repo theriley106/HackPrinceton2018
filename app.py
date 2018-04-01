@@ -29,10 +29,19 @@ def addNumber(phoneNumber):
 
 #@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
 def raiseIssue(cameraNum, listOfIssues=[]):
-	openIssues.append({"Camera": cameraNum})
+	print("GUN DETECTED")
+	numIn = False
+	for var in openIssues:
+		if str(var["Camera"]) == str(cameraNum):
+			numIn = True
+	if numIn == False:
+		openIssues.append({"Camera": cameraNum})
 
 #@app.route('/clearIssue/<cameraNum>', methods=['POST'])
 def clearIssue(cameraNum):
+	for var in openIssues:
+		if str(var["Camera"]) == str(cameraNum):
+			openIssues.remove(var)
 	pass
 
 @app.route('/clearAllIssues', methods=['POST'])
