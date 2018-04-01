@@ -71,7 +71,8 @@ def sendTextToAll(text="Emergency Situation Detected at {0}", location="Princeto
 	for number in returnNums():
 		sendText(number, text, location)
 
-
+def setAlarm(url):
+	pass
 
 
 if __name__ == '__main__':
