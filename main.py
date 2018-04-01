@@ -9,6 +9,7 @@ from imutils.object_detection import non_max_suppression
 import numpy
 import numpy as np
 import paho.mqtt.client as mqtt
+import json
 
 LOW_BANDWIDTH = True
 
@@ -69,6 +70,7 @@ def writeNum(number, dbFile="numDB.json"):
 def sendTextToAll(text="Emergency Situation Detected at {0}", location="Princeton University"):
 	for number in returnNums():
 		sendText(number, text, location)
+
 
 
 
