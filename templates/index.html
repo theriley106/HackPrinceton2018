@@ -20,6 +20,11 @@
                 document.getElementById("update1").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
             }, 500);
 
+            window.setInterval(function() {
+                var timestamp = Math.floor(Date.now());
+                document.getElementById("update2").src="http://10.25.213.197/cam_pic.php?time=" + timestamp;
+            }, 500);
+
             function danger(){
                 $('header').css('background', 'red');document.getElementById("update1").height=1000;document.getElementById("update1").width=1000;document.getElementById("information").innerHTML = "Danger!";
             }
@@ -43,7 +48,7 @@
                     <div class="inner"><img id="update1" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img></div>
                 </div>
                 <div class="image phone">
-                    <div class="inner"><img id="update2" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img></div>
+                    <div class="inner"><img id="update2" src="http://10.25.213.197/cam_pic.php?time=0" height="320"></img></div>
                 </div>
                 <div class="image phone">
                     <div class="inner"><img id="update3" src="http://10.24.88.66/html/cam_pic.php?time=0" height="320"></img></div>
