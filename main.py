@@ -58,7 +58,14 @@ def sendText(number, text="Emergency Situation Detected at {0}", location="Princ
 	)
 
 def returnNums(dbFile='numDB.json'):
-	return json.load(open(dbFile))
+	return json.load(open(dbFile))["Nums"]
+
+def writeNum(number, dbFile="numDB.json"):
+	currentList = returnNums()
+	currentList["Nums"].append(number)
+	with open(dbFile, 'w') as outfile:
+		json.dump(currentList, outfile)
+
 
 
 if __name__ == '__main__':
