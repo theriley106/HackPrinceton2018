@@ -67,7 +67,8 @@ def writeNum(number, dbFile="numDB.json"):
 		json.dump(currentList, outfile)
 
 def sendTextToAll(text="Emergency Situation Detected at {0}", location="Princeton University"):
-
+	for number in returnNums():
+		sendText(number, text, location)
 
 
 
