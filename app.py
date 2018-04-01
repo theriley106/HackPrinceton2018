@@ -36,6 +36,8 @@ def raiseIssue(cameraNum, listOfIssues=[]):
 			numIn = True
 	if numIn == False:
 		openIssues.append({"Camera": cameraNum})
+	with open("issueList.json", 'w') as outfile:
+		json.dump(openIssues, outfile)
 
 #@app.route('/clearIssue/<cameraNum>', methods=['POST'])
 def clearIssue(cameraNum):
@@ -50,7 +52,8 @@ def clearAllIssues():
 
 @app.route("/openIssues")
 def checkOpenIssues():
-	return jsonify(openIssues)
+	issueList = json.load(open('issueList.json'))
+	return jsonify(issueList)
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
