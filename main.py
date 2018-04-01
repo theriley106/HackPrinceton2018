@@ -30,7 +30,8 @@ def getInfo(base64String):
 	return response
 
 def detectInImage(listOfFeatures):
-	listOfObjects = ["Hardware", "Power Drill", "Drill", "Electronics"]
+	#listOfObjects = ["Hardware", "Power Drill", "Drill", "Electronics"]
+	listOfObjects = ["Coke", "Pepsi", "Drink", "Can", "Bottle"]
 	for var in listOfObjects:
 		if var.title() in listOfFeatures:
 			return True
