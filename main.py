@@ -44,18 +44,18 @@ def isAGun(imageString):
 def imgToNumpy(img):
 	return numpy.array(cv2.imencode('.png', img)[1]).tostring()
 
-def sendText(number, text="Emergency Situation Detected at {0}", location="Princeton University"):
+def sendText(number, text="Emergency Situation Detected at {0}", location="Princeton University", plusNumber=1):
 	text = text.format(location)
 
 	# You should avoid sharing this token,
 	#  and should store it in an env variable
 	lib = lib(token=open("../libKey.txt").read())
-sms = lib.messagebird.sms["@0.1.3"]
+	sms = lib.messagebird.sms["@0.1.3"]
 
-result = sms.create(
-  recipient="18645674106", # (required)
-  body="Testing to see if this works" # (required)
-)
+	result = sms.create(
+	  recipient=str(plusNumber) + str(number), # (required)
+	  body=text # (required)
+	)
 
 
 if __name__ == '__main__':
