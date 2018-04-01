@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import base64
+import lib
 import time
 import os
 import boto3
@@ -45,6 +46,17 @@ def imgToNumpy(img):
 
 def sendText(number, text="Emergency Situation Detected at {0}", location="Princeton University"):
 	text = text.format(location)
+
+	# You should avoid sharing this token,
+	#  and should store it in an env variable
+	lib = lib(token=open("../libKey.txt").read())
+sms = lib.messagebird.sms["@0.1.3"]
+
+result = sms.create(
+  recipient="18645674106", # (required)
+  body="Testing to see if this works" # (required)
+)
+
 
 if __name__ == '__main__':
 	while True:
