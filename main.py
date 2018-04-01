@@ -61,12 +61,13 @@ def returnNums(dbFile='numDB.json'):
 	return json.load(open(dbFile))["Nums"]
 
 def writeNum(number, dbFile="numDB.json"):
-	currentList = returnNums()
+	currentList = json.load(open(dbFile))
 	currentList["Nums"].append(number)
 	with open(dbFile, 'w') as outfile:
 		json.dump(currentList, outfile)
 
-def sendTextToAll()
+def sendTextToAll(text="Emergency Situation Detected at {0}", location="Princeton University"):
+
 
 
 
