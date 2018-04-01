@@ -4,35 +4,31 @@
         <title>FirstAlert</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
         <!-- Stylesheets -->
         <link href="{{ url_for('static', filename='assets/css/main.css') }}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
-
         <!-- Libraries -->
         <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
         <script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
         <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
         <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-            <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-            <meta charset="utf-8">
-            <!-- Bootstrap Imports -->
-            <!-- Latest compiled and minified CSS -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-            <!-- Optional theme -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-            <!-- Latest compiled and minified JavaScript -->
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='assets/js/jquery-3.1.1.js') }}"></script>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <!-- Bootstrap Imports -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script>
             window.setInterval(function() {
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("update1").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
             }, 100);
-
+            
             window.setInterval(function() {
                 fileSizeURL = "/openIssues";
                 jsonString = httpGet(fileSizeURL);
@@ -42,14 +38,18 @@
                     danger();
                 }
             }, 400);
-
+            
             window.setInterval(function() {
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("update2").src="http://10.25.213.197/cam_pic.php?time=" + timestamp;
             }, 100);
-
+            
             function danger(){
+<<<<<<< HEAD
+                $('#alert').animate({width: "100%"}, 200 );
+=======
                 $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
+>>>>>>> b2afc9f... Added clear issues
             }
             function httpGet(theUrl)
                 // The network request grabs the json containing mp3 structure
@@ -64,13 +64,12 @@
                 httpGet(fileSizeURL);
                $('header').css('background', '#4696e5');document.getElementById("information").innerHTML = '<h1><a href="#">Welcome to FirstAlert!</a></h1><p>Application is listening...<br></p>';
             }
-
+            
         </script>
         <style>
-        #header .image.phone {
+            #header .image.phone {
             padding-right: 10px !important;
-
-        }
+            }
         </style>
     </head>
     <body id="top">
@@ -87,8 +86,21 @@
                     <div class="inner"><img id="update2" src="http://10.25.213.197/cam_pic.php?time=0" height="320"></img></div>
                 </div>
             </header>
+            <!--Alert-->
+            <svg id="alert" width="0%" height="500" viewBox="130 50 400 350">
+                <path fill="none" d="M0 0h700v400H0z"/>
+                <defs>
+                    <linearGradient gradientUnits="objectBoundingBox" id="a" x1="0%" y1="0%" y2="0%">
+                        <stop offset="0" stop-color="#f45b69"/>
+                        <stop offset="100%" stop-color="#f4815b"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="335" cy="197" r="126.59" fill="none" stroke="url(#a)" stroke-width="25"/>
+                <circle cx="332" cy="340" r="40" transform="matrix(.62739 0 0 .62739 127.208 54.66)" fill="url(#a)"/>
+                <rect x="310" y="119" width="50" height="100" rx="30" ry="22" transform="matrix(.97143 0 0 1.21667 10.566 -38.643)" fill="url(#a)"/>
+            </svg>
+            <!---->
         </section>
-
-{% include 'modal.html' %}
+        {% include 'modal.html' %}
     </body>
 </html>

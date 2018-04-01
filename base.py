@@ -21,9 +21,9 @@ def checkForGun(url):
 			isGun, labels = main.isAGunWFeatures(data)
 			if isGun == True and prevAns == True:
 				app.raiseIssue(URLs.index(url), labels)
+			prevAns = isGun
 		except Exception as exp:
 			print exp
-		prevAns = isGun
 		time.sleep(.5)
 
 
