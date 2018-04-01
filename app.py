@@ -27,6 +27,10 @@ def raiseIssue(cameraNum):
 def clearIssue(cameraNum):
 	pass
 
+@app.route('/clearAllIssues', methods=['POST'])
+def clearAllIssues():
+	pass
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
