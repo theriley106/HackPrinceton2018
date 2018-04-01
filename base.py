@@ -2,6 +2,7 @@ import requests
 import shutil
 import threading
 import main
+import time
 
 URLs = ['http://10.24.88.66/html/cam_pic.php?time=12', "http://10.25.213.197/cam_pic.php?time=0"]
 
@@ -20,9 +21,10 @@ def checkForGun(url):
 				main.setAlarm(url)
 		except Exception as exp:
 			print exp
+		time.sleep(.5)
 
 
-threads = [threading.Thread(target=chekForGun, args=(url,)) for url in URLs]
+threads = [threading.Thread(target=checkForGun, args=(url,)) for url in URLs]
 for thread in threads:
 	thread.start()
 
