@@ -41,6 +41,14 @@
             function danger(){
                 $('header').css('background', 'red');document.getElementById("update1").height=1000;document.getElementById("update1").width=1000;document.getElementById("information").innerHTML = "Danger!";
             }
+            function httpGet(theUrl)
+                // The network request grabs the json containing mp3 structure
+                {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+                    xmlHttp.send( null );
+                    return xmlHttp.responseText;
+                }
 
         </script>
         <style>
