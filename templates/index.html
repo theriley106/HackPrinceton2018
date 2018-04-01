@@ -24,6 +24,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script>
+            window.setWait = false;
             window.setInterval(function() {
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("update1").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
@@ -34,7 +35,8 @@
                 jsonString = httpGet(fileSizeURL);
                 var fileInfo = JSON.parse(jsonString);
                 console.log(fileInfo.length)
-                if (fileInfo.length > 0) {
+                if (fileInfo.length > 0 && setWait == false) {
+                     setWait = true;
                     danger();
                 }
             }, 400);
@@ -47,6 +49,20 @@
             function danger(){
                 $('#alert').animate({width: "100%"}, 200 );
                 $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
+                document.addEventListener("keypress", function(event) {
+                        if (event.keyCode == 121) {
+                            // This is Y
+                            clearIssue();
+                            return
+                        }
+                    })
+                document.addEventListener("keypress", function(event) {
+                        if (event.keyCode == 110) {
+                            // This is N
+                            clearIssue();
+                            return
+                        }
+                    })
             }
             function httpGet(theUrl)
                 // The network request grabs the json containing mp3 structure
@@ -57,6 +73,7 @@
                     return xmlHttp.responseText;
                 }
             function clearIssue(){
+                setWait = false;
                 fileSizeURL = "/clearAllIssues";
                 httpGet(fileSizeURL);
                $('header').css('background', '#4696e5');document.getElementById("information").innerHTML = '<h1><a href="#">Welcome to FirstAlert!</a></h1><p>Application is listening...<br></p>';
