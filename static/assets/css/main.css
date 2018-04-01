@@ -588,7 +588,7 @@
      box-shadow: none;
      border-radius: 0;
      margin: 0 0 3em 0;
-     width: 13em;
+     width: 18em;
 }
  .image.phone img {
      border-radius: 0;
@@ -611,7 +611,7 @@
  .image.phone .inner:before {
      top: -1.375em;
      margin-left: -1em;
-     width: 2em;
+     width: 4em;
      height: 0.25em;
      border-radius: 0.5em;
      background: rgba(255, 255, 255, 0.25);
@@ -619,7 +619,7 @@
  .image.phone .inner:after {
      bottom: -2.75em;
      margin-left: -1em;
-     width: 2em;
+     width: 4em;
      height: 2em;
      border-radius: 100%;
      border: solid 2px rgba(255, 255, 255, 0.25);
@@ -1055,4 +1055,4 @@
          padding: 3em 1.5em 1em 1.5em ;
     }
 }
- 
+
