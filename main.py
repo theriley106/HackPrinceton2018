@@ -36,6 +36,12 @@ def detectInImage(listOfFeatures):
 			return True
 	return False
 
+def isAGunWFeatures(imageString):
+	listOfFeatures = []
+	for var in getInfo(imageString)['Labels']:
+		listOfFeatures.append(var["Name"])
+	return (detectInImage(listOfFeatures), listOfFeatures)
+
 def isAGun(imageString):
 	listOfFeatures = []
 	for var in getInfo(imageString)['Labels']:

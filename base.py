@@ -3,6 +3,7 @@ import shutil
 import threading
 import main
 import time
+import app
 
 URLs = ['http://10.24.88.66/html/cam_pic.php?time=12', "http://10.25.213.197/cam_pic.php?time=0"]
 
@@ -18,6 +19,7 @@ def checkForGun(url):
 				data = f.read()
 			isGun = main.isAGun(data)
 			if isGun == True:
+				app.raiseIssue(URLs.index(url))
 				main.setAlarm(url)
 		except Exception as exp:
 			print exp
