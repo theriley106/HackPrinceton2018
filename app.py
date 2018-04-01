@@ -4,6 +4,7 @@ sys.setdefaultencoding('UTF8')
 from flask import Flask, request, jsonify, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response
 app = Flask(__name__,template_folder="templates/",static_url_path='/static')
 import main
+import json
 openIssues = []
 
 @app.route('/')
@@ -12,13 +13,19 @@ def main():
 	sKey = open("../skey.txt").read().strip()
 	return "\n".join([awsKey, sKey])
 
+def writeNum(number, dbFile="numDB.json"):
+	currentList = json.load(open(dbFile))
+	currentList["Nums"].append(number)
+	with open(dbFile, 'w') as outfile:
+		json.dump(currentList, outfile)
+
 @app.route('/test')
 def test():
 	return render_template('index.html')
 
 @app.route('/addNumber/<phoneNumber>', methods=['POST'])
 def addNumber(phoneNumber):
-	main.writeNum(phoneNumber)
+	writeNum(phoneNumber)
 
 #@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
 def raiseIssue(cameraNum, listOfIssues=[]):
