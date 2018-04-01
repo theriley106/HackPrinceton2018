@@ -7,6 +7,7 @@ URLs = ['http://10.24.88.66/html/cam_pic.php?time=12', "http://10.25.213.197/cam
 
 def checkForGun(url):
 	while True:
+		print("Checking {}".format(url))
 		response = requests.get(url, stream=True)
 		with open('file{}.png'.format(URLs.index(url)), 'wb') as out_file:
 		    shutil.copyfileobj(response.raw, out_file)
