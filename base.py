@@ -17,10 +17,9 @@ def checkForGun(url):
 			del response
 			with open("file{}.png".format(URLs.index(url)), "rb") as f:
 				data = f.read()
-			isGun = main.isAGun(data)
+			isGun, labels = main.isAGunWFeatures(data)
 			if isGun == True:
-				app.raiseIssue(URLs.index(url))
-				main.setAlarm(url)
+				app.raiseIssue(URLs.index(url), labels)
 		except Exception as exp:
 			print exp
 		time.sleep(.5)

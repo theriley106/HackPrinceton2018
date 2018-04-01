@@ -21,7 +21,7 @@ def addNumber(phoneNumber):
 	main.writeNum(phoneNumber)
 
 #@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
-def raiseIssue(cameraNum):
+def raiseIssue(cameraNum, listOfIssues=[]):
 	openIssues.append({"Camera": cameraNum})
 
 #@app.route('/clearIssue/<cameraNum>', methods=['POST'])
