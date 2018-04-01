@@ -34,7 +34,7 @@
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("imptUpdate").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
 
-            }, 5000)
+            }, 500)
 
             window.setInterval(function() {
                 fileSizeURL = "/openIssues";
@@ -50,27 +50,27 @@
             window.setInterval(function() {
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("update2").src="http://10.25.213.197/cam_pic.php?time=" + timestamp;
-            }, 100);
+            }, 400);
 
             function danger(){
-
                 modal.style.display = "block";
-                $('#alert').animate({width: "100%"}, 200 );
-                $('header').css('background', 'red');document.getElementById("information").innerHTML = "<b><center>This situation needs your attention</center></b>";
-                document.addEventListener("keypress", function(event) {
-                        if (event.keyCode == 121) {
-                            // This is Y
-                            clearIssue();
-                            return
-                        }
-                    })
-                document.addEventListener("keypress", function(event) {
-                        if (event.keyCode == 110) {
-                            // This is N
-                            clearIssue();
-                            return
-                        }
-                    })
+                $('header').css('background', 'red');
+                document.getElementById("information").innerHTML = "<h2><b><center>This situation needs your attention</center></b></h2>";
+                document.addEventListener("keypress", function(event) {if (event.keyCode == 121) {
+                        // This is Y
+                        clearIssue();
+                        return
+                    }
+                }); document.addEventListener("keypress", function(event) {
+                    if (event.keyCode == 110) {
+                        // This is N
+                        clearIssue();
+                        return
+                    }
+                });
+
+
+
             }
             function httpGet(theUrl)
                 // The network request grabs the json containing mp3 structure
@@ -81,7 +81,6 @@
                     return xmlHttp.responseText;
                 }
             function clearIssue(){
-                document.getElementById("alert").style.display = 'none';
                 setWait = false;
                 fileSizeURL = "/clearAllIssues";
                 httpGet(fileSizeURL);
@@ -104,26 +103,22 @@
                       <!-- Modal content -->
                       <div class="modal-content">
                         <span class="close">&times;</span>
-                        <img id="imptUpdate" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:table-cell; vertical-align:middle; text-align:center; opacity: 0.8; height: 95% !important;"></img>
-                      </div>
+                        <h2><b><center><font style="color:#FFFFFF;">This situation needs your attention</font></center></b></h2><p></p>
+                        <img id="imptUpdate" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:table-cell; vertical-align:middle; text-align:center; opacity: 1; height: 95% !important;"></img>
+
+
+                       <h2><b><center><font style="color:#FFFFFF;">This situation needs your attention</font></center></b></h2><p></p>
+                       </div>
+                       </div>
+
+
+            <!----> </div>
+                      <!--Alert-->
 
                     </div>
         <section class="content">
             <header id="header">
-            <!--Alert-->
-            <svg id="alert" width="0%" height="500" viewBox="130 50 400 350">
-                <path fill="none" d="M0 0h700v400H0z"/>
-                <defs>
-                    <linearGradient gradientUnits="objectBoundingBox" id="a" x1="0%" y1="0%" y2="0%">
-                        <stop offset="0" stop-color="#f45b69"/>
-                        <stop offset="100%" stop-color="#f4815b"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="335" cy="197" r="126.59" fill="none" stroke="url(#a)" stroke-width="25"/>
-                <circle cx="332" cy="340" r="40" transform="matrix(.62739 0 0 .62739 127.208 54.66)" fill="url(#a)"/>
-                <rect x="310" y="119" width="50" height="100" rx="30" ry="22" transform="matrix(.97143 0 0 1.21667 10.566 -38.643)" fill="url(#a)"/>
-            </svg>
-            <!---->
+
                 <div id="information" class="content">
                     <h1><a href="#">Welcome to FirstAlert!</a></h1>
                     <p>Application is listening...<br /></p>
@@ -160,9 +155,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: #652727;
     margin: auto;
     padding: 20px;
+    padding-bottom: 120px;
     border: 1px solid #888;
     width: 80%;
     height: 80%;
