@@ -20,11 +20,11 @@ def test():
 def addNumber(phoneNumber):
 	main.writeNum(phoneNumber)
 
-@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
+#@app.route('/raiseIssue/<cameraNum>', methods=['POST'])
 def raiseIssue(cameraNum):
-	pass
+	openIssues.append({"Camera": cameraNum})
 
-@app.route('/clearIssue/<cameraNum>', methods=['POST'])
+#@app.route('/clearIssue/<cameraNum>', methods=['POST'])
 def clearIssue(cameraNum):
 	pass
 
