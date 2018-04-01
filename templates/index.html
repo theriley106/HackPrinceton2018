@@ -34,6 +34,13 @@
             }, 100);
 
             window.setInterval(function() {
+                fileSizeURL = "/openIssues";
+                jsonString = httpGet(fileSizeURL);
+                var fileInfo = JSON.parse(jsonString);
+                console.fileInfo;
+            }, 200);
+
+            window.setInterval(function() {
                 var timestamp = Math.floor(Date.now());
                 document.getElementById("update2").src="http://10.25.213.197/cam_pic.php?time=" + timestamp;
             }, 100);
