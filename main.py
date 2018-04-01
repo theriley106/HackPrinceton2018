@@ -57,6 +57,9 @@ def sendText(number, text="Emergency Situation Detected at {0}", location="Princ
 	  body=text # (required)
 	)
 
+def returnNums(dbFile='numDB.json'):
+	return json.load(open(dbFile))
+
 
 if __name__ == '__main__':
 	while True:
