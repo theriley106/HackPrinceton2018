@@ -23,6 +23,10 @@ def addNumber(phoneNumber):
 def raiseIssue(cameraNum):
 	pass
 
+@app.route('/clearIssue/<cameraNum>', methods=['POST'])
+def clearIssue(cameraNum):
+	pass
+
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
