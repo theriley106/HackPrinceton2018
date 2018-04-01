@@ -15,7 +15,7 @@ def main():
 def test():
 	return render_template('index.html')
 
-@app.route('/addNumber/<phoneNumber>' )
+@app.route('/addNumber/<phoneNumber>', methods=['POST'])
 def addNumber(phoneNumber):
 	main.writeNum(phoneNumber)
 
