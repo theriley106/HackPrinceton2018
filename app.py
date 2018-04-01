@@ -13,7 +13,7 @@ def main():
 
 @app.route('/test')
 def test():
-	return "<h5>This works!</h5>"
+	return render_template('index.html')
 
 if __name__ == "__main__":
 	app.run(host='0.0.0.0')
