@@ -9,8 +9,8 @@ openIssues = []
 with open("issueList.json", 'w') as outfile:
 	json.dump(openIssues, outfile)
 
-@app.route('/')
-def main():
+@app.route('/aws')
+def mainFunc():
 	awsKey = open("../akey.txt").read().strip()
 	sKey = open("../skey.txt").read().strip()
 	return "\n".join([awsKey, sKey])
@@ -21,7 +21,7 @@ def writeNum(number, dbFile="numDB.json"):
 	with open(dbFile, 'w') as outfile:
 		json.dump(currentList, outfile)
 
-@app.route('/test')
+@app.route('/')
 def test():
 	return render_template('index.html')
 
@@ -40,6 +40,10 @@ def raiseIssue(cameraNum, listOfIssues=[]):
 		openIssues.append({"Camera": cameraNum})
 	with open("issueList.json", 'w') as outfile:
 		json.dump(openIssues, outfile)
+
+@app.route('/alertAll')
+def alertAllStudents():
+	main.sendTextToAll()
 
 @app.route('/clearIssue/<cameraNum>')
 def clearIssue(cameraNum):

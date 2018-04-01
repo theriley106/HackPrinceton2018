@@ -58,6 +58,8 @@
                 document.getElementById("information").innerHTML = "<h2><b><center>This situation needs your attention</center></b></h2>";
                 document.addEventListener("keypress", function(event) {if (event.keyCode == 121) {
                         // This is Y
+                        fileSizeURL = "/alertAll";
+                        httpGet(fileSizeURL);
                         clearIssue();
                         return
                     }
@@ -81,6 +83,8 @@
                     return xmlHttp.responseText;
                 }
             function clearIssue(){
+
+                modal.style.display = "none";
                 setWait = false;
                 fileSizeURL = "/clearAllIssues";
                 httpGet(fileSizeURL);
@@ -107,7 +111,7 @@
                         <img id="imptUpdate" src="http://10.24.88.66/html/cam_pic.php?time=0" style="display:table-cell; vertical-align:middle; text-align:center; opacity: 1; height: 95% !important;"></img>
 
 
-                       <h2><b><center><font style="color:#FFFFFF;">This situation needs your attention</font></center></b></h2><p></p>
+                       <h2><b><center><font style="color:#FFFFFF;">Press Y To Alert Students | Press N To Ignore Alert</font></center></b></h2><p></p>
                        </div>
                        </div>
 
