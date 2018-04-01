@@ -15,27 +15,19 @@
         <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
         <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
         <script>
-window.setInterval(function() {
-    var timestamp = Math.floor(Date.now());
-    document.getElementById("update").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
-}, 50);
-
-function danger(){
-    $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
-}
-
-</script>
+            window.setInterval(function() {
+                var timestamp = Math.floor(Date.now());
+                document.getElementById("update").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
+            }, 50);
+            
+            function danger(){
+                $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
+            }
+            
+        </script>
     </head>
     <body id="top">
-        <!-- Navigation
-        <nav>
-            <li class="nav"><a href="#home">Home</a></li>
-            <li class="nav"><p>&#124;</p></li>
-            <li class="nav"><a href="#footer">Find Us</a></li>
-            <li class="nav"><a href="https://github.com/">Feedback</a></li>
-        </nav>
-       Home -->
-        <section id="home" class="content">
+        <section class="content">
             <header id="header">
                 <div id="information" class="content">
                     <h1><a href="#">Welcome to FirstAlert!</a></h1>
