@@ -18,7 +18,7 @@
 window.setInterval(function() {
     var timestamp = Math.floor(Date.now());
     document.getElementById("update").src="http://10.24.88.66/html/cam_pic.php?time=" + timestamp;
-}, 50);
+}, 500);
 
 function danger(){
     $('header').css('background', 'red');document.getElementById("information").innerHTML = "Danger!";
