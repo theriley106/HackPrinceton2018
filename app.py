@@ -48,9 +48,9 @@ def clearIssue(cameraNum):
 			openIssues.remove(var)
 	pass
 
-@app.route('/clearAllIssues', methods=['POST'])
+@app.route('/clearAllIssues')
 def clearAllIssues():
-	pass
+	return jsonify([])
 
 @app.route("/openIssues")
 def checkOpenIssues():
