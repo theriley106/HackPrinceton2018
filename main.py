@@ -57,20 +57,15 @@ def sendText(number, text="Emergency Situation Detected at {0}", location="Princ
 
 	# You should avoid sharing this token,
 	#  and should store it in an env variable
-	lib = lib(token=open("../libKey.txt").read())
-	sms = lib.messagebird.sms["@0.1.3"]
+	os.system("lib messagebird.sms.create --recipient 18645674106 --body Emergency Situation Detected at Princeton")
 
-	result = sms.create(
-	  recipient=str(number), # (required)
-	  body=text # (required)
-	)
 
 def returnNums(dbFile='numDB.json'):
-	return json.load(open(dbFile))["Nums"]
+	return json.load(open(dbFile))["Numbers"]
 
 def writeNum(number, dbFile="numDB.json"):
 	currentList = json.load(open(dbFile))
-	currentList["Nums"].append(number)
+	currentList["Numbers"].append(number)
 	with open(dbFile, 'w') as outfile:
 		json.dump(currentList, outfile)
 

@@ -102,3 +102,4 @@ ENV/
 
 # macOS file management
 .DS_Store
+file*.png

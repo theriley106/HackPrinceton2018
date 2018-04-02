@@ -47,7 +47,7 @@ def raiseIssue(cameraNum, listOfIssues=[]):
 
 @app.route('/alertAll')
 def alertAllStudents():
-	main.sendTextToAll()
+	main.sendText("f")
 
 @app.route('/clearIssue/<cameraNum>')
 def clearIssue(cameraNum):
